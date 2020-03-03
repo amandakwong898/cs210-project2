@@ -1,0 +1,59 @@
+1. Enter the number of hours it took you to complete the project between
+   the <<< and >>> signs below (eg, <<<10>>>).
+
+   <<<20>>>
+   
+2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
+   between <<< and >>> signs below (eg, <<<3>>>).
+
+   <<<3>>>
+
+3. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Problem 1 (Deque): I started off with declaring and initializing my instance variables N, first, and last.
+   For the isEmpty method, I just returned N == 0 to determine whether or not the deque was empty, and I returned N
+   for the size method. For addFirst and addLast, I threw the NullPointerExceptions first, then created new Nodes
+   to set it equal to the parameter as an item. As long as first and last were not null, respectively, I set the
+   next and previous item to first and last, and the previous and next item to those Nodes. I then incremented N by 1.
+   For removeFirst and removeLast, I threw the NoSuchElementException if the deque was empty. I decremented N by 1,
+   and created a new Item, called item, and set them equal to the first and last items (respectively). I shifted the
+   first to the right and last to the left to indicate the item being removed in the deque, and then returned item.
+   In Iterator <Item> iterator, I simply returned a new DequeIterator. In the private class DequeIterator, I declared
+   a Node called current and set it equal to first. For the hasNext method, I returned if current was not equal to
+   null, and for the next method (after throwing the NoSuchElementException), I created a new Item and set it equal to
+   current.item, and set current equal to the next Node. I returned item.
+
+   Problem 2 (Random Queue): I initialized q, an array to store the items of queue with an initial capacity of 2, and
+   and integer N, which is the size of the queue. Again, for the isEmpty and size methods I just returned N == 0 and
+   N respectively. For the enqueue method, I threw an exception if the item was null. If the size, N, was equal to the
+   length of the array, I resized it to twice the current capacity using the resize method. I then inserted the given
+   item in q at index N, and incremented N by 1. For the dequeue method, after throwing the exception, I created a
+   random integer r with StdRandom.uniform and saved q[r] in item. I set q[r] to q[N - 1] and decremented N by 1 as
+   well as set q[N - 1] to null. I resized q to half its current capacity if it was at quarter capacity. In the sample
+   method, I created a variable r, a random integer from the interval [0, N) and returned that. In the private class,
+   I made an array of type Item[] called items to store the items of q, and current, which is the index of the current
+   item in items. I used System.arraycopy to copy the N items from q into items and StdRandom.shuffle to shuffle the
+   items. I made current equal to N. In the hasNext method, I returned current > 0, and for the next method I iterated
+   in descending order from N - 1 to 0 after shuffling.
+
+   Problem 3 (Subset): I created an object q of type ResizingArrayRandomQueue, as well as an instance of In called in
+   that took the file from args[1]. While not empty, I read strings from file (args[1]) and enqueue them into q, and
+   lastly I returned q.
+   
+4. Did you receive help from anyone? List their names, status (classmate, 
+   CS210 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   Swami Iyer   Instructor  helped me understand Problem 1 and why my code was not compiling
+   James Michaud    TA  helped solve Problems 2 & 3 and the issue with my iterator
+   Suncharn Pipithkul   SI  helped me with debugging on my exercises
+
+5. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   I really enjoyed this assignment! It was definitely a lot less challenging than the previous project, but still
+   difficult enough because I was not familiar with the idea of Nodes and LinkedLists.
